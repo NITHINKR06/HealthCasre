@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "./../components/Layout";
 import { message, Tabs, Modal } from "antd"; // Import Modal
 import { useSelector, useDispatch } from "react-redux";
@@ -30,6 +30,8 @@ const NotificationPage = () => {
       dispatch(hideLoading());
       if (res.data.success) {
         message.success(res.data.message);
+        window.location.reload();
+
       } else {
         message.error(res.data.message);
       }
@@ -56,6 +58,7 @@ const NotificationPage = () => {
       dispatch(hideLoading());
       if (res.data.success) {
         message.success(res.data.message);
+        window.location.reload();
       } else {
         message.error(res.data.message);
       }
@@ -135,6 +138,11 @@ const NotificationPage = () => {
   const handleCloseModal = () => {
     setSelectedNotification(null);
   };
+
+  useEffect(() => {
+    handleMarkAllRead();
+    handleDeleteAllRead();
+  }, []);
 
   return (
     <Layout>

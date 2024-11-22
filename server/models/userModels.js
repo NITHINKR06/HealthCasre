@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  isUserBlock: {
+    type: String,
+    default: "unblocked",
+  },
   notifcation: [
     {
       message: { type: String, required: true },

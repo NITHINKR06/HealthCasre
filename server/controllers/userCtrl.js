@@ -115,7 +115,7 @@ const authController = async (req, res) => {
 const getUserDatabyId = async (req, res) => {
   try {
     const user = await userModel.findById(req.body.userId);
-    // console.log(user)
+    console.log(user)
     if (!user) {
       return res.status(200).send({ message: "User Not Found", success: false });
     }

@@ -5,6 +5,7 @@ const {
   changeAccountStatusController,
 } = require("../controllers/adminCtrl");
 const authMiddleware = require("../middlewares/authMiddleware");
+const { toggleBlockUser } = require("../controllers/blockCrtl");
 
 const router = express.Router();
 
@@ -20,5 +21,8 @@ router.post(
   authMiddleware,
   changeAccountStatusController
 );
+
+// BLOCK USER || POST
+router.post("/toggleBlockUser", authMiddleware, toggleBlockUser);
 
 module.exports = router;
